@@ -112,12 +112,21 @@ function afficherLienDeconnexion($prefix = '') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $pseudo = $_POST['pseudo'] ?? '';
-    $password = $_POST['password'] ?? '';
+    // Charger les utilisateurs depuis le fichier JSON
+    $utilisateurs = json_decode(file_get_contents(__DIR__ . '/../data/utilisateurs.json'), true);
+
+    // Vérifier si le fichier JSON est valide
+    if (!is_array($utilisateurs)) {
+        $utilisateurs = []; // Définit un tableau vide si le fichier JSON est vide ou invalide
+    }
+
+    $pseudo = $_POST['pseudo'] ?? ''; // Récupérer le pseudo depuis le formulaire
+    $password = $_POST['password'] ?? ''; // Récupérer le mot de passe depuis le formulaire
 
     // Recherche de l'utilisateur dans le fichier JSON
     foreach ($utilisateurs as $utilisateur) {
-        if ($utilisateur['utilisateur'] === $pseudo) { // Vérifier le pseudo
+        if (isset($utilisateur['utilisateur'], $utilisateur['motdepasse'], $utilisateur['role']) &&
+            $utilisateur['utilisateur'] === $pseudo) { // Vérifier le pseudo
             // Vérification du mot de passe avec le hash stocké
             if (password_verify($password, $utilisateur['motdepasse'])) {
                 $_SESSION['id'] = $utilisateur['utilisateur'];

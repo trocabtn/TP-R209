@@ -1,114 +1,100 @@
-[
-    {
+{
+    "0": {
         "utilisateur": "admin",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "zoe",
         "email": "admin@admin.com",
         "role": "admin"
     },
-    {
+    "1": {
         "utilisateur": "user",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "mini",
         "email": "user@user.com",
         "role": "user"
     },
-    {
+    "2": {
         "utilisateur": "modo",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "dacia",
         "email": "modo@modo.com",
         "role": "modo"
     },
-    {
+    "3": {
         "utilisateur": "anonymous",
         "motdepasse": "$2y$10$KjUbubNiOZMWhx4pCTE39.Y3X6aveHLCCqBEohBZ71D.r2YY5mrGy",
         "vehicule": "none",
         "email": "",
         "role": "visitor"
     },
-    {
+    "4": {
         "utilisateur": "aucaijoir",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "citroen",
         "email": "aucaijoir@aucaijoir.com",
         "role": "user"
     },
-    {
+    "5": {
         "utilisateur": "qalaicou",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "citroen",
         "email": "qalaicou@qalaicou.com",
         "role": "user"
     },
-    {
+    "6": {
         "utilisateur": "mopovaf",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "bmw",
         "email": "mopovaf@mopovaf.com",
         "role": "user"
     },
-    {
+    "7": {
         "utilisateur": "moiqauzi",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "bmw",
         "email": "moiqauzi@moiqauzi.com",
         "role": "user"
     },
-    {
+    "8": {
         "utilisateur": "odeuvoipoif",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "lada",
         "email": "odeuvoipoif@odeuvoipoif.com",
         "role": "user"
     },
-    {
+    "9": {
         "utilisateur": "atoipeneu",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "ford",
         "email": "atoipeneu@atoipeneu.com",
         "role": "user"
     },
-    {
+    "10": {
         "utilisateur": "noifaumau",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "ferrari",
         "email": "noifaumau@noifaumau.com",
         "role": "user"
     },
-    {
+    "11": {
         "utilisateur": "neuhagal",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "lancia",
         "email": "neuhagal@neuhagal.com",
         "role": "user"
     },
-    {
+    "12": {
         "utilisateur": "beukaita",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "renault",
         "email": "beukaita@beukaita.com",
         "role": "user"
     },
-    {
-        "utilisateur": "rezetar",
-        "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
-        "vehicule": "volkswagen",
-        "email": "rezetar@rezetar.com",
-        "role": "user"
-    },
-    {
+    "14": {
         "utilisateur": "mimi",
         "motdepasse": "$2y$10$RZQpzDCAMj5XBHGP5VJHB.jgPSnoebSBMxBa83hZ1.YL0tHzhsJQ.",
         "vehicule": "honda",
         "email": "mimimou@miaou.fr",
-        "role": "user"
-    },
-    {
-        "utilisateur": "testest",
-        "motdepasse": "$2y$10$b\/jwaATmKdb0GsQsawqJGuKdKbsrfJXTgnJRlPWHkqL2K2aRDiFvC",
-        "vehicule": "testest",
-        "email": "test@test.test",
-        "role": "user"
+        "role": "utilisateur"
     }
-]
+}

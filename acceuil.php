@@ -61,6 +61,21 @@ navigation();
             </div>
         </div>
     </div>
+
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+        <div class="row text-center my-4">
+            <div class="col-12">
+                <div class="card shadow-sm p-3">
+                    <h5 class="card-title">Administration</h5>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="admin/view_utilisateurs.php" class="btn btn-primary">Voir les utilisateurs</a>
+                        <a href="admin/view_annonces.php" class="btn btn-primary">Voir les annonces</a>
+                        <a href="administration.php" class="btn btn-primary">Page d'administration</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>
 
 <?php pieddepage(); ?>
