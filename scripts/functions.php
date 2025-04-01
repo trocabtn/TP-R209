@@ -53,40 +53,38 @@ function entete($prefix = '') {
 
 
 function navigation($prefix = '') {
-    echo '<nav class="navbar navbar-expand-lg navbar-light bg-light animate__animated animate__fadeIn">';
+    echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
     echo '<div class="container-fluid">';
-    echo '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">';
+    echo '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">';
     echo '<span class="navbar-toggler-icon"></span>';
     echo '</button>';
     echo '<div class="collapse navbar-collapse" id="navbarNav">';
     echo '<ul class="navbar-nav me-auto">';
 
     // Lien vers la page d'accueil
-    echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'acceuil.php">Accueil</a></li>';
+    echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'acceuil.php">Accueil</a></li>';
 
-    // Lien vers le profil (uniquement si connecté)
-    if (isset($_SESSION['id'])) {
-        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'profil.php">Profil</a></li>';
-    }
+    // Lien vers la page "Rechercher des annonces"
+    echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'rechercher.php">Rechercher des annonces</a></li>';
 
     // Lien vers la page "Visualiser les annonces"
-    echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'visualiser.php">Visualiser les annonces</a></li>';
+    echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'visualiser.php">Visualiser les annonces</a></li>';
 
     // Lien vers la page "Proposer une annonce" (uniquement si connecté)
     if (isset($_SESSION['id'])) {
-        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'proposer.php">Proposer une annonce</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'proposer.php">Proposer une annonce</a></li>';
     }
 
     // Lien vers la page "Modifier une annonce" (uniquement si connecté)
     if (isset($_SESSION['id'])) {
-        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'modifier.php">Modifier une annonce</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'modifier.php">Modifier une annonce</a></li>';
     }
 
     // Liens pour les administrateurs
     if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'admin/view_utilisateurs.php">Voir les utilisateurs</a></li>';
-        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'admin/view_annonces.php">Voir les annonces</a></li>';
-        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'administration.php">Administration</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'admin/view_utilisateurs.php">Voir les utilisateurs</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'admin/view_annonces.php">Voir les annonces</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'administration.php">Administration</a></li>';
     }
 
     echo '</ul>';
@@ -103,10 +101,10 @@ function navigation($prefix = '') {
             echo '<img src="' . $prefix . 'images/photo_de_profil_par_defaut.jpg" alt="Photo de profil par défaut" class="profile-circle-navbar">';
         }
         echo '</li>';
-        echo '<li class="nav-item"><a class="nav-link text-danger animate__animated animate__fadeInRight" href="' . $prefix . 'deconnexion.php">Déconnexion</a></li>';
+        echo '<li class="nav-item"><a class="nav-link text-danger" href="' . $prefix . 'deconnexion.php">Déconnexion</a></li>';
     } else {
-        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight" href="' . $prefix . 'connexion.php">Connexion</a></li>';
-        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight" href="' . $prefix . 'inscription.php">Inscription</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'connexion.php">Connexion</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'inscription.php">Inscription</a></li>';
     }
     echo '</ul>';
 

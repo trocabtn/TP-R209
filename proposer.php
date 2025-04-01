@@ -12,10 +12,28 @@ navigation();
 $annoncesFile = 'data/annonces.json';
 $annonces = json_decode(file_get_contents($annoncesFile), true) ?? [];
 
+// Ajouter un ID unique aux annonces qui n'ont pas de clé "id-annonce"
+foreach ($annonces as &$annonce) {
+    if (!isset($annonce['id-annonce'])) {
+        $annonce['id-annonce'] = uniqid($annonce['Pseudo'] . '-', true);
+    }
+}
+
+// Sauvegarder les modifications dans le fichier JSON
+file_put_contents($annoncesFile, json_encode($annonces, JSON_PRETTY_PRINT));
+
+// Charger les utilisateurs depuis le fichier JSON
+$utilisateursFile = 'data/utilisateurs.json';
+$utilisateurs = json_decode(file_get_contents($utilisateursFile), true) ?? [];
+
 // Gestion du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Générer un ID unique pour l'annonce
+    $idAnnonce = uniqid($_SESSION['id'] . '-', true);
+
     // Récupérer les données du formulaire
     $nouvelleAnnonce = [
+        'id-annonce' => $idAnnonce, // ID unique de l'annonce
         'Pseudo' => $_SESSION['id'] ?? 'Anonyme',
         'Date' => $_POST['date'] . 'T' . $_POST['heure'],
         'Depart' => $_POST['ville_depart'] ?? '',
@@ -30,6 +48,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Sauvegarder les annonces dans le fichier JSON
     file_put_contents($annoncesFile, json_encode($annonces, JSON_PRETTY_PRINT));
+
+    // Ajouter l'ID de l'annonce à l'utilisateur dans utilisateurs.json
+    foreach ($utilisateurs as &$utilisateur) {
+        if ($utilisateur['utilisateur'] === $_SESSION['id']) {
+            if (!isset($utilisateur['id_annonce'])) {
+                $utilisateur['id_annonce'] = []; // Initialiser la clé si elle n'existe pas
+            }
+            $utilisateur['id_annonce'][] = $idAnnonce; // Ajouter l'ID de l'annonce
+            break;
+        }
+    }
+
+    // Sauvegarder les modifications dans le fichier utilisateurs.json
+    file_put_contents($utilisateursFile, json_encode($utilisateurs, JSON_PRETTY_PRINT));
 
     // Rediriger vers la page de visualisation
     header('Location: visualiser.php');
