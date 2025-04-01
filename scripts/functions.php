@@ -39,26 +39,11 @@ function entete($prefix = '') {
     echo '
     <header class="py-3 mb-4 border-bottom">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <a href="' . $prefix . 'acceuil.php" class="text-dark text-decoration-none">
-                        <span class="fs-3 gloria-hallelujah-regular">CarCarBla</span>
-                    </a>
-                </div>
-                <div>';
-    if (isset($_SESSION['utilisateur'])) {
-        // Afficher le nom de l'utilisateur connecté et le bouton de déconnexion
-        echo '
-                    <span class="me-3">Bienvenue, ' . htmlspecialchars($_SESSION['utilisateur']) . '</span>
-                    <a href="' . $prefix . 'deconnexion.php" class="btn btn-danger">Déconnexion</a>';
-    } else {
-        // Afficher les boutons de connexion et d'inscription si l'utilisateur n'est pas connecté
-        echo '
-                    <a href="' . $prefix . 'connexion.php" class="btn btn-primary me-2">Se connecter</a>
-                    <a href="' . $prefix . 'inscription.php" class="btn btn-outline-success">S\'inscrire</a>';
-    }
-    echo '
-                </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="' . $prefix . 'acceuil.php" class="text-dark text-decoration-none text-center">
+                    <img src="' . $prefix . 'images/logo.png" alt="Logo CarCarBla" style="height: 50px; margin-right: 10px;">
+                    <span class="fs-3 gloria-hallelujah-regular">CarCarBla</span>
+                </a>
             </div>
         </div>
     </header>';
@@ -66,24 +51,45 @@ function entete($prefix = '') {
 
 
 
-function navigation($param=""){
+function navigation($prefix = '') {
+    echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
+    echo '<div class="container-fluid">';
+    echo '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">';
+    echo '<span class="navbar-toggler-icon"></span>';
+    echo '</button>';
+    echo '<div class="collapse navbar-collapse" id="navbarNav">';
+    echo '<ul class="navbar-nav me-auto">';
 
-        echo '
-        <nav class="py-2 bg-light border-bottom">
-            <div class="container d-flex flex-wrap">
-            <ul class="nav me-auto">
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">About</a></li>
-            </ul>
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-            </div>
-        </nav>  
-        ';
+    // Lien vers la page d'accueil
+    echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'acceuil.php">Accueil</a></li>';
+
+    // Lien vers le profil (uniquement si connecté)
+    if (isset($_SESSION['id'])) {
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'profil.php">Profil</a></li>';
+    }
+
+    // Liens pour les administrateurs
+    if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'admin/view_utilisateurs.php">Voir les utilisateurs</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'admin/view_annonces.php">Voir les annonces</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'administration.php">Administration</a></li>';
+    }
+
+    echo '</ul>';
+
+    // Boutons de connexion/déconnexion et inscription
+    echo '<ul class="navbar-nav">';
+    if (isset($_SESSION['id'])) {
+        echo '<li class="nav-item"><a class="nav-link text-danger" href="' . $prefix . 'deconnexion.php">Déconnexion</a></li>';
+    } else {
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'connexion.php">Connexion</a></li>';
+        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'inscription.php">Inscription</a></li>';
+    }
+    echo '</ul>';
+
+    echo '</div>';
+    echo '</div>';
+    echo '</nav>';
 }
 
 function pieddepage($param="") {
@@ -124,6 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? ''; // Récupérer le mot de passe depuis le formulaire
 
     // Recherche de l'utilisateur dans le fichier JSON
+    $utilisateurTrouve = false;
     foreach ($utilisateurs as $utilisateur) {
         if (isset($utilisateur['utilisateur'], $utilisateur['motdepasse'], $utilisateur['role']) &&
             $utilisateur['utilisateur'] === $pseudo) { // Vérifier le pseudo
@@ -142,10 +149,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $message = 'Mot de passe incorrect.';
             }
+            $utilisateurTrouve = true;
+            break;
         }
     }
 
-    if (empty($message)) {
+    if (!$utilisateurTrouve) {
         $message = 'Utilisateur non trouvé.';
     }
 }
