@@ -105,42 +105,10 @@
         "role": "user"
     },
     {
-        "pseudo": "Robin",
-        "email": "robin.baton@outlook.fr",
-        "vehicule": "Toiuran",
-        "password": "$2y$10$daljN8vn\/LnvZ6lE7wnd9uDA5rCg2cj\/Rz6PxJQMpr0vkf2aone0e"
-    },
-    {
-        "pseudo": "s",
-        "email": "s@d.fr",
-        "vehicule": "s",
-        "password": "$2y$10$wKKVCIzdnradbwjvpq3lmuK3pBCM0TUQFlsnDoxRjJtFJRJxYuV1S"
-    },
-    {
-        "pseudo": "qd",
-        "email": "qd@dd.de",
-        "vehicule": "ee",
-        "password": "$2y$10$ZBfa2YFGH0GIzAO9jfY1ue7HwhAApgs9TJ1ojJzFQLKI8\/H3ZTxXq"
-    },
-    {
-        "id": 19,
-        "pseudo": "haha",
-        "vehicule": "dd",
-        "email": "d@d.fr",
-        "password": "$2y$10$Mtj5EiP3m1n7R0wraDmUFOZCBIodRp60nLuYsCZN7wveTVtiEGQty"
-    },
-    {
-        "id": 20,
-        "pseudo": "laaa",
-        "vehicule": "laaa",
-        "email": "laa@laa.fr",
-        "password": "$2y$10$rWgkrcdxjvxCNpsPnxBKHuMa6tWONiCsvNPaQ\/GF8DyZyE7NgqLz6"
-    },
-    {
-        "id": 21,
-        "pseudo": "testest",
+        "utilisateur": "testest",
+        "motdepasse": "$2y$10$b\/jwaATmKdb0GsQsawqJGuKdKbsrfJXTgnJRlPWHkqL2K2aRDiFvC",
         "vehicule": "testest",
         "email": "test@test.test",
-        "password": "$2y$10$CbzkuPSe3An35siUk0IereIwg9tkk7QPlIu\/SBalJfPijQbyn.7p6"
+        "role": "user"
     }
 ]

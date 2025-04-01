@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pseudo_existe = false;
         $email_existe = false;
         foreach ($utilisateurs as $utilisateur) {
-            if (isset($utilisateur['pseudo']) && $utilisateur['pseudo'] === $pseudo) {
+            if (isset($utilisateur['utilisateur']) && $utilisateur['utilisateur'] === $pseudo) {
                 $pseudo_existe = true;
             }
             if (isset($utilisateur['email']) && $utilisateur['email'] === $email) {
@@ -40,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Ajout du nouvel utilisateur
             $nouvel_utilisateur = [
-                'id' => count($utilisateurs) + 1,
-                'pseudo' => $pseudo,
+                'utilisateur' => $pseudo,
+                'motdepasse' => $password_hache,
                 'vehicule' => $vehicule,
                 'email' => $email,
-                'password' => $password_hache
+                'role' => 'user' // Rôle par défaut
             ];
             $utilisateurs[] = $nouvel_utilisateur;
 
