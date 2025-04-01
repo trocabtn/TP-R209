@@ -87,29 +87,23 @@ function navigation(){
         ';
 }
 
-function pieddepage(){
+function pieddepage() {
+    $heure = date('H:i');
+    $annee = date('Y');
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $port = $_SERVER['REMOTE_PORT'];
 
-    $heure= date('h-i');
-    $annee= date('Y');
-
-    echo ' <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top ml-1">
-    <p> Robin BATON robin.baton@etudiant.univ-rennes.fr G1</p>
-    <br> 
-    <div class=" padding-5 "></div>
-    <p class="col-md-4 mb-0 text-body-secondary">'.$heure.'  &copy; '.$annee.'</p>
-
-    <a href="/" class=" d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ml-1">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-    </a>
-    
-    <div class=" padding-5 "></div>
-    
-    <a href="#" class="nav-link">instagram</a>
-    <a href="#" class="nav-link">linkedin</a>
-    </footer>
+    echo ' 
+    <div class="container mt-5">
+        <div class="jumbotron text-center py-4 bg-light border rounded">
+            <p class="mb-1"><strong>Robin BATON</strong> - robin.baton@etudiant.univ-rennes.fr - G1</p>
+            <p class="mb-1">' . $heure . ' &copy; ' . $annee . ' | IP: ' . $ip . ' | Port: ' . $port . '</p>
+            <div class="d-flex justify-content-center mt-2">
+                <a href="#" class="mx-2 text-dark">Instagram</a>
+                <a href="#" class="mx-2 text-dark">LinkedIn</a>
+            </div>
+        </div>
     </div>';
-
 }
 
 ?>

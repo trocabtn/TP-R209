@@ -8,22 +8,26 @@ parametres();
 entete();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Vérifier que toutes les valeurs sont définies
-    $pseudo = $_POST['pseudo'] ?? null;
-    $email = $_POST['email'] ?? null;
+    // Récupération des champs avec sécurité
+    $pseudo = $_POST['pseudo'] ?? '';
+    $email = $_POST['email'] ?? '';
     $vehicule = $_POST['vehicule'] ?? '';
-    $password = $_POST['password'] ?? null;
+    $password = $_POST['password'] ?? '';
 
-    if ($pseudo && $email && $password) {
+    // Vérification des champs obligatoires
+    if (!empty($pseudo) && !empty($email) && !empty($password)) {
         // Vérifier si le pseudo est unique
+        $pseudoPris = false;
         foreach ($utilisateurs as $user) {
             if ($user['pseudo'] === $pseudo) {
+                $pseudoPris = true;
                 $message = "Ce pseudo est déjà pris.";
                 break;
             }
         }
 
-        if (!$message) {
+        // Ajouter le nouvel utilisateur si le pseudo est libre
+        if (!$pseudoPris) {
             $nouvel_utilisateur = [
                 "pseudo" => htmlspecialchars($pseudo),
                 "email" => htmlspecialchars($email),
@@ -34,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $utilisateurs[] = $nouvel_utilisateur;
             file_put_contents('data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
 
+            // Redirection vers la page de connexion
             header('Location: connexion.php');
             exit;
         }
@@ -50,13 +55,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h1>Inscription</h1>
-    <p><?php echo $message; ?></p>
+    <?php if (!empty($message)) : ?>
+        <p style="color:red;"><?php echo $message; ?></p>
+    <?php endif; ?>
     <form method="POST">
-        Pseudo : <input type="text" name="pseudo" required><br>
-        Email : <input type="email" name="email" required><br>
-        Véhicule : <input type="text" name="vehicule"><br>
-        Mot de passe : <input type="password" name="password" required><br>
+        <label for="pseudo">Pseudo :</label>
+        <input type="text" id="pseudo" name="pseudo" required><br>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="vehicule">Véhicule :</label>
+        <input type="text" id="vehicule" name="vehicule"><br>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required><br>
+
         <input type="submit" value="S'inscrire">
     </form>
 </body>
 </html>
+s

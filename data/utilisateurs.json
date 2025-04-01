@@ -109,5 +109,17 @@
         "email": "robin.baton@outlook.fr",
         "vehicule": "Toiuran",
         "password": "$2y$10$daljN8vn\/LnvZ6lE7wnd9uDA5rCg2cj\/Rz6PxJQMpr0vkf2aone0e"
+    },
+    {
+        "pseudo": "s",
+        "email": "s@d.fr",
+        "vehicule": "s",
+        "password": "$2y$10$wKKVCIzdnradbwjvpq3lmuK3pBCM0TUQFlsnDoxRjJtFJRJxYuV1S"
+    },
+    {
+        "pseudo": "qd",
+        "email": "qd@dd.de",
+        "vehicule": "ee",
+        "password": "$2y$10$ZBfa2YFGH0GIzAO9jfY1ue7HwhAApgs9TJ1ojJzFQLKI8\/H3ZTxXq"
     }
 ]
