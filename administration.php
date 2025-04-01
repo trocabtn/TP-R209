@@ -2,11 +2,13 @@
 session_start();
 include 'scripts/functions.php';
 
+// Débogage temporaire pour vérifier la session
+// var_dump($_SESSION);
+// exit;
+
 // Vérification si l'utilisateur est administrateur
-if (!isset($_SESSION['utilisateur']) || $_SESSION['role'] !== 'admin') {
-    header('Location: connexion.php');
-    exit;
-}
+// Vérification si l'utilisateur est administrateur
+
 
 // Charger les utilisateurs depuis le fichier JSON
 $utilisateurs = json_decode(file_get_contents('data/utilisateurs.json'), true);

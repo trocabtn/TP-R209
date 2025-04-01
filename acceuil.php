@@ -22,11 +22,11 @@ navigation();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
-            background: linear-gradient(to right, #f8f9fa, #e9ecef); /* Dégradé clair */
-            color: #343a40; /* Texte gris foncé */
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            color: #343a40;
         }
         .navbar {
-            background-color: #ffffff; /* Blanc */
+            background-color: #ffffff; 
             border-bottom: 1px solid #dee2e6; /* Ligne de séparation */
         }
         .navbar .nav-link {
@@ -100,6 +100,15 @@ navigation();
                 <div class="card feature-card shadow-sm p-3 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
                     <h5 class="card-title">Gagnez du temps</h5>
                     <p>Optimisez vos trajets avec nos itinéraires intelligents.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center my-4">
+            <div class="col-12">
+                <div class="card shadow-sm p-3 animate__animated animate__fadeInUp">
+                    <h5 class="card-title">En savoir plus</h5>
+                    <p>Découvrez notre <a href="wiki.php" class="text-primary">page wiki</a> pour en savoir plus sur notre fonctionnement et nos services.</p>
                 </div>
             </div>
         </div>
