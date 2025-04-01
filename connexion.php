@@ -6,16 +6,16 @@ include 'scripts/functions.php';
 
 // Vérification du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $pseudo = $_POST['pseudo'] ?? ''; // Récupérer le pseudo depuis le formulaire
+    $pseudo = $_POST['utilisateur'] ?? ''; // Récupérer le pseudo depuis le formulaire
     $password = $_POST['password'] ?? '';
 
     // Recherche de l'utilisateur dans le fichier JSON
     foreach ($utilisateurs as $utilisateur) {
-        if ($utilisateur['pseudo'] === $pseudo) { // Vérifier le pseudo
+        if ($utilisateur['utilisateur'] === $pseudo) { // Vérifier le pseudo
             // Vérification du mot de passe avec le hash stocké
             if (password_verify($password, $utilisateur['password'])) {
                 $_SESSION['id'] = $utilisateur['id'];
-                $_SESSION['pseudo'] = $utilisateur['pseudo'];
+                $_SESSION['utilisateur'] = $utilisateur['pseudo'];
 
                 // Gestion des cookies pour l'authentification persistante (bonus)
                 if (!empty($_POST['remember'])) {

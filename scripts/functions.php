@@ -47,10 +47,12 @@ function entete($prefix = '') {
                 </div>
                 <div>';
     if (empty($_SESSION['id'])) {
+        // Afficher les boutons "Se connecter" et "S'inscrire" si l'utilisateur n'est pas connecté
         echo '
                     <a href="' . $prefix . 'connexion.php" class="btn btn-primary me-2">Se connecter</a>
                     <a href="' . $prefix . 'inscription.php" class="btn btn-outline-success">S\'inscrire</a>';
     } else {
+        // Afficher le bouton "Mon Profil" et "Déconnexion" si l'utilisateur est connecté
         echo '
                     <a href="' . $prefix . 'profil.php" class="btn btn-secondary me-2">Mon Profil</a>';
         afficherLienDeconnexion($prefix);
@@ -104,8 +106,38 @@ function pieddepage($param="") {
 }
 
 function afficherLienDeconnexion($prefix = '') {
-    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+    if (isset($_SESSION['id'])) {
         echo '<a href="' . $prefix . 'deconnexion.php" class="btn btn-danger">Déconnexion</a>';
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pseudo = $_POST['pseudo'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    // Recherche de l'utilisateur dans le fichier JSON
+    foreach ($utilisateurs as $utilisateur) {
+        if ($utilisateur['utilisateur'] === $pseudo) { // Vérifier le pseudo
+            // Vérification du mot de passe avec le hash stocké
+            if (password_verify($password, $utilisateur['motdepasse'])) {
+                $_SESSION['id'] = $utilisateur['utilisateur'];
+                $_SESSION['role'] = $utilisateur['role'];
+
+                // Gestion des cookies pour l'authentification persistante (bonus)
+                if (!empty($_POST['remember'])) {
+                    setcookie('user_id', $utilisateur['utilisateur'], time() + (86400 * 30), '/'); // 30 jours
+                }
+
+                header('Location: acceuil.php');
+                exit;
+            } else {
+                $message = 'Mot de passe incorrect.';
+            }
+        }
+    }
+
+    if (empty($message)) {
+        $message = 'Utilisateur non trouvé.';
     }
 }
 
