@@ -3,33 +3,68 @@ session_start();
 $utilisateurs = json_decode(file_get_contents('data/utilisateurs.json'), true);
 $message = '';
 include 'scripts/functions.php';
+
+// Vérification du formulaire
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pseudo = $_POST['pseudo'] ?? ''; // Récupérer le pseudo depuis le formulaire
+    $password = $_POST['password'] ?? '';
+
+    // Recherche de l'utilisateur dans le fichier JSON
+    foreach ($utilisateurs as $utilisateur) {
+        if ($utilisateur['pseudo'] === $pseudo) { // Vérifier le pseudo
+            // Vérification du mot de passe avec le hash stocké
+            if (password_verify($password, $utilisateur['password'])) {
+                $_SESSION['id'] = $utilisateur['id'];
+                $_SESSION['pseudo'] = $utilisateur['pseudo'];
+
+                // Gestion des cookies pour l'authentification persistante (bonus)
+                if (!empty($_POST['remember'])) {
+                    setcookie('user_id', $utilisateur['id'], time() + (86400 * 30), '/'); // 30 jours
+                    setcookie('user_pseudo', $utilisateur['pseudo'], time() + (86400 * 30), '/');
+                }
+
+                header('Location: acceuil.php');
+                exit;
+            } else {
+                $message = 'Mot de passe incorrect.';
+            }
+        }
+    }
+
+    if (empty($message)) {
+        $message = 'Utilisateur non trouvé.';
+    }
+}
+
 parametres();
 entete();
 navigation();
-pieddepage();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    foreach ($utilisateurs as $user) {
-        if ($user['email'] === $_POST['email'] && password_verify($_POST['password'], $user['password'])) {
-            $_SESSION['user'] = $user;
-            if (!empty($_POST['remember'])) {
-                setcookie('email', $_POST['email'], time() + 3600 * 24 * 30, "/");
-            }
-            header('Location: accueil.php');
-            exit;
-        }
-    }
-    $message = "Identifiants incorrects.";
-}
 ?>
 
-
 <body>
-    <h1>Connexion</h1>
-    <p><?php echo $message; ?></p>
-    <form method="POST">
-        Email : <input type="email" name="email" required><br>
-        Mot de passe : <input type="password" name="password" required><br>
-        <input type="checkbox" name="remember"> Se souvenir de moi<br>
-        <input type="submit" value="Se connecter">
-    </form>
+    <div class="container mt-5">
+        <h2>Connexion</h2>
+        <?php if (!empty($message)): ?>
+            <div class="alert alert-danger"><?php echo $message; ?></div>
+        <?php endif; ?>
+        <form method="POST" action="">
+            <div class="mb-3">
+                <label for="pseudo" class="form-label">Nom d'utilisateur</label>
+                <input type="text" class="form-control" id="pseudo" name="pseudo" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                <label class="form-check-label" for="remember">Se souvenir de moi</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+    </div>
 </body>
+
+<?php
+pieddepage();
+?>

@@ -121,5 +121,26 @@
         "email": "qd@dd.de",
         "vehicule": "ee",
         "password": "$2y$10$ZBfa2YFGH0GIzAO9jfY1ue7HwhAApgs9TJ1ojJzFQLKI8\/H3ZTxXq"
+    },
+    {
+        "id": 19,
+        "pseudo": "haha",
+        "vehicule": "dd",
+        "email": "d@d.fr",
+        "password": "$2y$10$Mtj5EiP3m1n7R0wraDmUFOZCBIodRp60nLuYsCZN7wveTVtiEGQty"
+    },
+    {
+        "id": 20,
+        "pseudo": "laaa",
+        "vehicule": "laaa",
+        "email": "laa@laa.fr",
+        "password": "$2y$10$rWgkrcdxjvxCNpsPnxBKHuMa6tWONiCsvNPaQ\/GF8DyZyE7NgqLz6"
+    },
+    {
+        "id": 21,
+        "pseudo": "testest",
+        "vehicule": "testest",
+        "email": "test@test.test",
+        "password": "$2y$10$CbzkuPSe3An35siUk0IereIwg9tkk7QPlIu\/SBalJfPijQbyn.7p6"
     }
 ]

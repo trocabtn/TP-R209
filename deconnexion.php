@@ -1,6 +1,15 @@
 <?php
 session_start();
+
+// Détruire la session
+session_unset();
 session_destroy();
-setcookie('email', '', time() - 3600, "/");
-header('Location: accueil.php');
+
+// Supprimer les cookies d'authentification persistante
+setcookie('user_id', '', time() - 3600, '/');
+setcookie('user_email', '', time() - 3600, '/');
+
+// Rediriger vers la page de connexion ou d'accueil
+header('Location: connexion.php');
 exit;
+?>

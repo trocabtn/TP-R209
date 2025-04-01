@@ -30,38 +30,33 @@ function parametres($param=""){
 
         </style>
         ';
-
+ 
 }
 
 
 
-function entete($param="") {
+function entete($prefix = '') {
     echo '
     <header class="py-3 mb-4 border-bottom">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="mx-auto">
-                    <a href="'.$param.'acceuil.php" class="d-flex flex-column align-items-center text-dark text-decoration-none">
-                        <img src="'.$param.'images/logo.png" alt="logo" height="50px" class="mb-2">
+                <div>
+                    <a href="' . $prefix . 'acceuil.php" class="text-dark text-decoration-none">
                         <span class="fs-3 gloria-hallelujah-regular">CarCarBla</span>
                     </a>
-                </div>';
-
+                </div>
+                <div>';
     if (empty($_SESSION['id'])) {
         echo '
-                <div>
-                    <a href="'.$param.'connexion.php" class="btn btn-primary me-2">Se connecter</a>
-                    <a href="'.$param.'inscription.php" class="btn btn-outline-success">S\'inscrire</a>
-                </div>';
+                    <a href="' . $prefix . 'connexion.php" class="btn btn-primary me-2">Se connecter</a>
+                    <a href="' . $prefix . 'inscription.php" class="btn btn-outline-success">S\'inscrire</a>';
     } else {
         echo '
-                <div>
-                    <a href="'.$param.'profil.php" class="btn btn-secondary me-2">Mon Profil</a>
-                    <a href="'.$param.'deconnexion.php" class="btn btn-danger">Déconnexion</a>
-                </div>';
+                    <a href="' . $prefix . 'profil.php" class="btn btn-secondary me-2">Mon Profil</a>';
+        afficherLienDeconnexion($prefix);
     }
-
     echo '
+                </div>
             </div>
         </div>
     </header>';
@@ -106,6 +101,12 @@ function pieddepage($param="") {
             </div>
         </div>
     </div>';
+}
+
+function afficherLienDeconnexion($prefix = '') {
+    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+        echo '<a href="' . $prefix . 'deconnexion.php" class="btn btn-danger">Déconnexion</a>';
+    }
 }
 
 ?>
