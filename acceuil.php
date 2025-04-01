@@ -10,7 +10,7 @@ navigation();
 ?>
 
 <body>
-<h1 class="text-center my-4">Bienvenue sur le site</h1>
+<h1 class="text-center my-4">Bienvenue chez CarCarBla !</h1>
 
 <div class="container">
     <div class="row text-center my-4">
