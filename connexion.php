@@ -2,6 +2,7 @@
 session_start();
 include 'scripts/functions.php';
 
+
 parametres();
 entete();
 navigation();

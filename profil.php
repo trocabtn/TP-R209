@@ -3,6 +3,7 @@ session_start();
 
 include 'scripts/functions.php';
 
+
 parametres();
 entete();
 navigation();
@@ -39,8 +40,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Modification de l'image de profil
     if (isset($_FILES['image_profil']) && $_FILES['image_profil']['error'] === UPLOAD_ERR_OK) {
-        $dossierCible = 'uploads/';
-        $nomFichier = basename($_FILES['image_profil']['name']);
+        $dossierCible = 'images/';
+
+        // Vérifier si le dossier existe, sinon le créer
+        if (!is_dir($dossierCible)) {
+            mkdir($dossierCible, 0777, true);
+        }
+
+        // Renommer le fichier avec le nom de l'utilisateur
+        $extension = pathinfo($_FILES['image_profil']['name'], PATHINFO_EXTENSION);
+        $nomFichier = $_SESSION['id'] . '.' . $extension; // Nom basé sur l'utilisateur
         $cheminFichier = $dossierCible . $nomFichier;
 
         // Supprimer l'ancienne image si elle existe
@@ -51,6 +60,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Déplacer le fichier téléchargé
         if (move_uploaded_file($_FILES['image_profil']['tmp_name'], $cheminFichier)) {
             $utilisateur['image_profil'] = $cheminFichier;
+            $_SESSION['image_profil'] = $cheminFichier; // Mettre à jour la session
+        } else {
+            echo "Erreur : Impossible de déplacer le fichier téléchargé.";
+        }
+    } else {
+        if (isset($_FILES['image_profil']['error']) && $_FILES['image_profil']['error'] !== UPLOAD_ERR_NO_FILE) {
+            echo "Erreur lors du téléchargement de l'image : Code " . $_FILES['image_profil']['error'];
         }
     }
 
@@ -90,6 +106,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
     </form>
+</div>
+
+<div class="user-profile d-flex align-items-center">
+    <span class="user-label me-2">Nom d'utilisateur :</span>
+    <span class="user-name me-3"><strong><?= htmlspecialchars($utilisateur['utilisateur']) ?></strong></span>
+    <?php if (!empty($utilisateur['image_profil'])): ?>
+        <img src="<?= htmlspecialchars($utilisateur['image_profil']) ?>" alt="Photo de profil" class="profile-circle">
+    <?php else: ?>
+        <img src="images/photo_de_profil_par_defaut.jpg" alt="Photo de profil par défaut" class="profile-circle">
+    <?php endif; ?>
 </div>
 
 <?php pieddepage(); ?>

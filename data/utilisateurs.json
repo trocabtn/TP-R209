@@ -96,5 +96,13 @@
         "vehicule": "honda",
         "email": "mimimou@miaou.fr",
         "role": "utilisateur"
+    },
+    "15": {
+        "utilisateur": "k",
+        "email": "k@k.k.k",
+        "motdepasse": "$2y$10$ZeiSmM8B8Bdc.LqSYQg8..13\/GBeSDRHHxUwKPvZbXqhfPeNUST0G",
+        "role": "user",
+        "vehicule": "Touran",
+        "image_profil": "images\/k.jpg"
     }
 }
