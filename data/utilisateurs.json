@@ -11,7 +11,8 @@
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "mini",
         "email": "user@user.com",
-        "role": "user"
+        "role": "user",
+        "image_profil": "images\/user.jpg"
     },
     "2": {
         "utilisateur": "modo",

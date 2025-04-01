@@ -69,6 +69,19 @@ function navigation($prefix = '') {
         echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'profil.php">Profil</a></li>';
     }
 
+    // Lien vers la page "Visualiser les annonces"
+    echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'visualiser.php">Visualiser les annonces</a></li>';
+
+    // Lien vers la page "Proposer une annonce" (uniquement si connecté)
+    if (isset($_SESSION['id'])) {
+        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'proposer.php">Proposer une annonce</a></li>';
+    }
+
+    // Lien vers la page "Modifier une annonce" (uniquement si connecté)
+    if (isset($_SESSION['id'])) {
+        echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'modifier.php">Modifier une annonce</a></li>';
+    }
+
     // Liens pour les administrateurs
     if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
         echo '<li class="nav-item"><a class="nav-link animate__animated animate__fadeInLeft" href="' . $prefix . 'admin/view_utilisateurs.php">Voir les utilisateurs</a></li>';
