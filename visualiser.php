@@ -1,18 +1,13 @@
 <?php
-// filepath: c:\wamp64\www\TP-R209\visualiser.php
 session_start();
-
 include 'scripts/functions.php';
-
 parametres();
 entete();
 navigation();
 
-// Charger les annonces depuis le fichier JSON
 $annoncesFile = 'data/annonces.json';
 $annonces = json_decode(file_get_contents($annoncesFile), true) ?? [];
 
-// Gestion de l'inscription à une annonce
 if (isset($_GET['action']) && $_GET['action'] === 'inscrire' && isset($_GET['index'])) {
     if (!isset($_SESSION['id'])) {
         echo '<p class="text-center text-danger">Vous devez être connecté pour vous inscrire à une annonce.</p>';

@@ -1,3 +1,45 @@
+body {
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    color: #343a40;
+}
+.navbar {
+    background-color: #ffffff; 
+    border-bottom: 1px solid #dee2e6;
+}
+.navbar .nav-link {
+    color: #343a40; /* Gris foncé */
+}
+.navbar .nav-link:hover {
+    color: #007bff; /* Bleu clair */
+}
+.card {
+    background: #ffffff; /* Blanc */
+    border: 1px solid #dee2e6;
+    color: #343a40;
+}
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.admin-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+.features {
+    margin-top: 50px;
+}
+.features .feature-card {
+    height: 175px; /* Hauteur fixe pour toutes les cartes */
+    transition: transform 0.3s ease-in-out;
+}
+.features .feature-card:hover {
+    transform: scale(1.05);
+}
+
 .user-profile {
     display: flex;
     align-items: center;
@@ -31,4 +73,31 @@
     font-weight: bold;
     color: #333;
     margin-left: 5px;
+}
+
+.calendar {
+    table-layout: fixed;
+}
+.calendar th, .calendar td {
+    width: 14.28%; /* Diviser en 7 colonnes */
+    height: 150px;
+    vertical-align: top;
+}
+.calendar th {
+    height: 50px; /* Réduire la hauteur de la première rangée */
+    background-color: #f9f9f9; /* Fond de couleur très léger */
+    text-align: center; /* Centrer le texte */
+}
+.calendar td {
+    border: 1px solid #ddd;
+}
+.calendar .date {
+    font-weight: bold;
+}
+.event {
+    font-size: 0.9em;
+    margin-top: 5px;
+    background-color: #f8f9fa;
+    padding: 5px;
+    border-radius: 5px;
 }

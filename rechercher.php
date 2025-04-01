@@ -1,26 +1,19 @@
 <?php
-// filepath: c:\wamp64\www\TP-R209\rechercher.php
 session_start();
-
 include 'scripts/functions.php';
 
 parametres();
 entete();
 navigation();
 
-// Charger les annonces depuis le fichier JSON
 $annoncesFile = 'data/annonces.json';
 $annonces = json_decode(file_get_contents($annoncesFile), true) ?? [];
-
-// Gestion du formulaire de recherche
 $criteres = [
     'date' => $_GET['date'] ?? '',
     'places' => $_GET['places'] ?? '',
     'depart' => $_GET['depart'] ?? '',
     'arrivee' => $_GET['arrivee'] ?? ''
 ];
-
-// Filtrer les annonces en fonction des critères
 $annoncesFiltrees = array_filter($annonces, function ($annonce) use ($criteres) {
     if (!empty($criteres['date']) && strpos($annonce['Date'], $criteres['date']) === false) {
         return false;
@@ -36,8 +29,6 @@ $annoncesFiltrees = array_filter($annonces, function ($annonce) use ($criteres) 
     }
     return true;
 });
-
-// Gestion de l'inscription à une annonce
 if (isset($_GET['action']) && $_GET['action'] === 'inscrire' && isset($_GET['index'])) {
     if (!isset($_SESSION['id'])) {
         echo '<p class="text-center text-danger">Vous devez être connecté pour vous inscrire à une annonce.</p>';
@@ -56,7 +47,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'inscrire' && isset($_GET['ind
     }
 }
 ?>
-
 <body>
     <h1 class="text-center my-4">Rechercher des annonces</h1>
 
@@ -82,7 +72,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'inscrire' && isset($_GET['ind
             </div>
             <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
         </form>
-
         <?php if (!empty($annoncesFiltrees)): ?>
             <ul class="list-group">
                 <?php foreach ($annoncesFiltrees as $index => $annonce): ?>
@@ -104,7 +93,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'inscrire' && isset($_GET['ind
             <p class="text-center">Aucune annonce ne correspond à vos critères.</p>
         <?php endif; ?>
     </div>
-
     <?php pieddepage(); ?>
 </body>
 </html>

@@ -1,43 +1,30 @@
 <?php
-// filepath: c:\wamp64\www\TP-R209\modifier.php
 session_start();
-
 include 'scripts/functions.php';
 
 parametres();
 entete();
 navigation();
 
-// Charger les annonces depuis le fichier JSON
 $annoncesFile = 'data/annonces.json';
 $annonces = json_decode(file_get_contents($annoncesFile), true) ?? [];
-
-// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['id'])) {
     echo '<p class="text-center text-danger">Vous devez être connecté pour accéder à cette page.</p>';
     exit;
 }
 
-// Vérifier si l'utilisateur est modérateur ou administrateur
 $isModerator = isset($_SESSION['role']) && ($_SESSION['role'] === 'modo' || $_SESSION['role'] === 'admin');
-
-// Récupérer les annonces modifiables
 $annoncesUtilisateur = [];
 foreach ($annonces as $index => $annonce) {
-    // Les modérateurs peuvent voir toutes les annonces
     if ($isModerator || (isset($annonce['Pseudo']) && $annonce['Pseudo'] === $_SESSION['id'])) {
         $annoncesUtilisateur[$index] = $annonce;
     }
 }
-
-// Supprimer une annonce si demandé
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['index'])) {
     $index = (int)$_GET['index'];
-
-    // Vérifier si l'utilisateur a le droit de supprimer l'annonce
     if ($isModerator || (isset($annonces[$index]) && $annonces[$index]['Pseudo'] === $_SESSION['id'])) {
         unset($annonces[$index]);
-        $annonces = array_values($annonces); // Réindexer le tableau
+        $annonces = array_values($annonces);
         file_put_contents($annoncesFile, json_encode($annonces, JSON_PRETTY_PRINT));
         header('Location: modifier.php');
         exit;

@@ -2,33 +2,24 @@
 session_start();
 include 'scripts/functions.php';
 
-
 parametres();
 entete();
 navigation();
-
-// Initialiser un message d'erreur vide
 $message = '';
 
-// Vérifier si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pseudo = trim($_POST['pseudo'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
 
-    // Vérifier si tous les champs sont remplis
     if (empty($pseudo) || empty($email) || empty($password) || empty($confirm_password)) {
         $message = 'Tous les champs sont obligatoires.';
     } elseif ($password !== $confirm_password) {
-        // Vérifier si les mots de passe correspondent
         $message = 'Les mots de passe ne correspondent pas.';
     } else {
-        // Charger les utilisateurs existants depuis le fichier JSON
         $file_path = __DIR__ . '/data/utilisateurs.json';
         $utilisateurs = json_decode(file_get_contents($file_path), true) ?? [];
-
-        // Vérifier si le pseudo ou l'email existe déjà
         foreach ($utilisateurs as $utilisateur) {
             if ($utilisateur['utilisateur'] === $pseudo) {
                 $message = 'Ce pseudo est déjà utilisé.';
@@ -39,25 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 break;
             }
         }
-
-        // Si aucune erreur, ajouter l'utilisateur
         if (empty($message)) {
-            // Hacher le mot de passe
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // Ajouter le nouvel utilisateur
             $nouvel_utilisateur = [
                 'utilisateur' => $pseudo,
                 'email' => $email,
                 'motdepasse' => $hashed_password,
-                'role' => 'user' // Par défaut, le rôle est "user"
+                'role' => 'user'
             ];
             $utilisateurs[] = $nouvel_utilisateur;
-
-            // Enregistrer les utilisateurs dans le fichier JSON
             file_put_contents($file_path, json_encode($utilisateurs, JSON_PRETTY_PRINT));
-
-            // Rediriger vers la page de connexion
             header('Location: connexion.php');
             exit;
         }
@@ -76,8 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Inscription</h1>
-
-        <!-- Afficher un message d'erreur si nécessaire -->
         <?php if (!empty($message)): ?>
             <div class="alert alert-danger"><?= htmlspecialchars($message) ?></div>
         <?php endif; ?>

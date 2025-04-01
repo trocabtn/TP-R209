@@ -2,8 +2,6 @@
 session_start();
 include 'scripts/functions.php';
 
-
-// Charger les données nécessaires
 $utilisateurs = json_decode(file_get_contents('data/utilisateurs.json'), true) ?? [];
 $annonces = json_decode(file_get_contents('data/annonces.json'), true) ?? [];
 
@@ -12,58 +10,6 @@ entete();
 navigation();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - CarCarBla</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        body {
-            background: linear-gradient(to right, #f8f9fa, #e9ecef);
-            color: #343a40;
-        }
-        .navbar {
-            background-color: #ffffff; 
-            border-bottom: 1px solid #dee2e6; /* Ligne de séparation */
-        }
-        .navbar .nav-link {
-            color: #343a40; /* Gris foncé */
-        }
-        .navbar .nav-link:hover {
-            color: #007bff; /* Bleu clair */
-        }
-        .card {
-            background: #ffffff; /* Blanc */
-            border: 1px solid #dee2e6;
-            color: #343a40;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .admin-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .features {
-            margin-top: 50px;
-        }
-        .features .feature-card {
-            height: 175px; /* Hauteur fixe pour toutes les cartes */
-            transition: transform 0.3s ease-in-out;
-        }
-        .features .feature-card:hover {
-            transform: scale(1.05);
-        }
-    </style>
-</head>
 <body>
     <h1 class="text-center my-4 animate__animated animate__fadeInDown">Bienvenue chez <span style="color: #007bff;">CarCarBla</span> !</h1>
 
@@ -99,7 +45,7 @@ navigation();
             <div class="col-md-4">
                 <div class="card feature-card shadow-sm p-3 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
                     <h5 class="card-title">Gagnez du temps</h5>
-                    <p>Optimisez vos trajets avec nos itinéraires intelligents.</p>
+                    <p>Observez vos dates de trajet via notre calendrier et trouvez rapidement une annonce qui vous convient.</p>
                 </div>
             </div>
         </div>
@@ -129,9 +75,8 @@ navigation();
 
     <?php pieddepage(); ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        // Animation au survol des cartes
         document.querySelectorAll('.feature-card').forEach(card => {
             card.addEventListener('mouseover', () => {
                 card.classList.add('animate__pulse');

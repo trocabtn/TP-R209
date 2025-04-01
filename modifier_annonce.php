@@ -1,24 +1,18 @@
 <?php
-// filepath: c:\wamp64\www\TP-R209\modifier_annonce.php
 session_start();
-
 include 'scripts/functions.php';
 
 parametres();
 entete();
 navigation();
 
-// Charger les annonces depuis le fichier JSON
 $annoncesFile = 'data/annonces.json';
 $annonces = json_decode(file_get_contents($annoncesFile), true) ?? [];
 
-// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['id'])) {
     echo '<p class="text-center text-danger">Vous devez être connecté pour modifier une annonce.</p>';
     exit;
 }
-
-// Vérifier si un index est passé dans l'URL
 if (!isset($_GET['index'])) {
     echo '<p class="text-center text-danger">Aucune annonce spécifiée.</p>';
     exit;
@@ -34,19 +28,13 @@ if ($annonce === null || (!$isModerator && $annonce['Pseudo'] !== $_SESSION['id'
     exit;
 }
 
-// Gestion du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Mettre à jour les données de l'annonce
     $annonce['Date'] = $_POST['date'] . 'T' . $_POST['heure'];
     $annonce['Depart'] = $_POST['ville_depart'] ?? '';
     $annonce['Arrivee'] = $_POST['ville_arrivee'] ?? '';
     $annonce['Places'] = (int)$_POST['places_disponibles'] ?? 0;
     $annonce['Commentaire'] = $_POST['commentaire'] ?? '';
-
-    // Sauvegarder les modifications dans le fichier JSON
     file_put_contents($annoncesFile, json_encode($annonces, JSON_PRETTY_PRINT));
-
-    // Rediriger vers la page de modification
     header('Location: modifier.php');
     exit;
 }
@@ -54,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <h1 class="text-center my-4">Modifier une annonce</h1>
-
     <div class="container">
         <form method="POST">
             <div class="mb-3">
@@ -90,7 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
         </form>
     </div>
-
     <?php pieddepage(); ?>
 </body>
 </html>

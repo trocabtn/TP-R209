@@ -1,18 +1,10 @@
 {
-    "0": {
-        "utilisateur": "admin",
-        "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
-        "vehicule": "zoe",
-        "email": "admin@admin.com",
-        "role": "admin",
-        "id": 0
-    },
     "1": {
         "utilisateur": "user",
         "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
         "vehicule": "mini",
         "email": "user@user.com",
-        "role": "user",
+        "role": "utilisateur",
         "image_profil": "images\/user.jpg",
         "id": 1
     },
@@ -111,5 +103,13 @@
         "email": "mimimou@miaou.fr",
         "role": "user",
         "id": 14
+    },
+    "15": {
+        "utilisateur": "admin",
+        "motdepasse": "$2y$10$EztV.T8zsvz4sXMVAOBiKee.ByapuNsNPfp4BsoVtNNuZtRGn7YKa",
+        "vehicule": "mini",
+        "email": "admin@admin.com",
+        "role": "admin",
+        "id": 15
     }
 }

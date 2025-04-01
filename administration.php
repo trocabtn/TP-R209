@@ -2,19 +2,10 @@
 session_start();
 include 'scripts/functions.php';
 
-// Débogage temporaire pour vérifier la session
-// var_dump($_SESSION);
-// exit;
 
-// Vérification si l'utilisateur est administrateur
-// Vérification si l'utilisateur est administrateur
-
-
-// Charger les utilisateurs depuis le fichier JSON
 $utilisateurs = json_decode(file_get_contents('data/utilisateurs.json'), true);
 $message = '';
 
-// Gestion des actions (modification, suppression, recherche)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['modifier_role'])) {
         $pseudo = $_POST['utilisateur'];
@@ -48,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 parametres();
 entete();
+navigation();
 ?>
 
 <body>
@@ -56,16 +48,12 @@ entete();
         <?php if (!empty($message)): ?>
             <div class="alert alert-success"><?php echo $message; ?></div>
         <?php endif; ?>
-
-        <!-- Formulaire de recherche -->
         <form method="POST" class="mb-4">
             <div class="input-group">
                 <input type="text" class="form-control" name="recherche" placeholder="Rechercher par nom">
                 <button type="submit" name="rechercher" class="btn btn-primary">Rechercher</button>
             </div>
         </form>
-
-        <!-- Tableau des utilisateurs -->
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -89,6 +77,7 @@ entete();
                                 <input type="hidden" name="utilisateur" value="<?php echo $utilisateur['utilisateur']; ?>">
                                 <select name="role" class="form-select d-inline w-auto">
                                     <option value="utilisateur" <?php echo ($utilisateur['role'] ?? 'utilisateur') === 'utilisateur' ? 'selected' : ''; ?>>Utilisateur</option>
+                                    <option value="modo" <?php echo ($utilisateur['role'] ?? 'utilisateur') === 'modo' ? 'selected' : ''; ?>>Modérateur</option>
                                     <option value="admin" <?php echo ($utilisateur['role'] ?? 'utilisateur') === 'admin' ? 'selected' : ''; ?>>Admin</option>
                                 </select>
                                 <button type="submit" name="modifier_role" class="btn btn-success btn-sm">Modifier</button>

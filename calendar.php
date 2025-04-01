@@ -8,7 +8,7 @@ entete();
 navigation();
 $annoncesFile = 'data/annonces.json';
 $annonces = json_decode(file_get_contents($annoncesFile), true) ?? [];
-
+setlocale(LC_TIME, 'fr_FR.UTF-8');
 
 // si il est est pas co on sort
 if (!isset($_SESSION['id'])) {
@@ -40,55 +40,25 @@ if ($mois > 12) {
     $mois = 1;
     $annee++;
 }
-
-// Calculer le premier jour du mois et le nombre de jours dans le mois
-$premierJour = date('N', strtotime("$annee-$mois-01")); // 1 (lundi) à 7 (dimanche)
+$premierJour = date('N', strtotime("$annee-$mois-01"));
 $joursDansMois = cal_days_in_month(CAL_GREGORIAN, $mois, $annee);
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier des covoiturages</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        .calendar {
-            table-layout: fixed;
-        }
-        .calendar th, .calendar td {
-            width: 14.28%; /* Diviser en 7 colonnes */
-            height: 150px;
-            vertical-align: top;
-        }
-        .calendar th {
-            height: 50px; /* Réduire la hauteur de la première rangée */
-            background-color: #f9f9f9; /* Fond de couleur très léger */
-            text-align: center; /* Centrer le texte */
-        }
-        .calendar td {
-            border: 1px solid #ddd;
-        }
-        .calendar .date {
-            font-weight: bold;
-        }
-        .event {
-            font-size: 0.9em;
-            margin-top: 5px;
-            background-color: #f8f9fa;
-            padding: 5px;
-            border-radius: 5px;
-        }
-    </style>
-</head>
 <body>
     <h1 class="text-center my-4">Calendrier des covoiturages</h1>
 
+    <div class="alert alert-info text-center" role="alert">
+    Salut <strong><?= htmlspecialchars($_SESSION['id']); ?></strong> ! Ce calendrier est là pour toi : il affiche uniquement les covoiturages auxquels tu es inscrit. Prêt à organiser tes trajets ? 🚗💨
+    </div>
     <div class="container">
         <div class="d-flex justify-content-between mb-3">
             <a href="?mois=<?= $mois === 1 ? 12 : $mois - 1 ?>&annee=<?= $mois === 1 ? $annee - 1 : $annee ?>" class="btn btn-primary">Mois précédent</a>
-            <h2><?= date('F Y', strtotime("$annee-$mois-01")) ?></h2>
+            <?php
+            $date = new DateTime("$annee-$mois-01");
+            $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
+            $formatter->setPattern('MMMM yyyy');
+            ?>
+            <h2><?= ucfirst($formatter->format($date)) ?></h2>
             <a href="?mois=<?= $mois === 12 ? 1 : $mois + 1 ?>&annee=<?= $mois === 12 ? $annee + 1 : $annee ?>" class="btn btn-primary">Mois suivant</a>
         </div>
         <table class="table table-bordered calendar">

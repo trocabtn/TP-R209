@@ -13,7 +13,9 @@ function parametres($param=""){
         <title>'.$file.'</title>
         <script src="'.$param.'scripts"></script>
         <link rel="stylesheet" href="'.$param.'css/style.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <style>
         @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
         .gloria-hallelujah-regular {
@@ -96,12 +98,16 @@ function navigation($prefix = '') {
 }
 
 function pieddepage() {
+    date_default_timezone_set('Europe/Paris');
+    $heureActuelle = date('H:i:s');
+
     echo '
     <footer class="footer bg-light py-4 mt-5 animate__animated animate__fadeInUp">
         <div class="container text-center">
             <p class="mb-1"><strong>Robin BATON</strong> - robin.baton@etudiant.univ-rennes.fr - G1</p>
             <p class="mb-1">&copy; ' . date('Y') . ' CarCarBla. Tous droits réservés.</p>
             <p class="mb-1">IP : ' . ($_SERVER['REMOTE_ADDR'] === '::1' ? '127.0.0.1' : $_SERVER['REMOTE_ADDR']) . ' | Port : ' . $_SERVER['REMOTE_PORT'] . '</p>
+            <p class="mb-1">Heure actuelle : ' . $heureActuelle . '</p>
             <div class="d-flex justify-content-center mt-2">
                 <a href="#" class="mx-2 text-dark animate__animated animate__fadeInLeft">Instagram</a>
                 <a href="#" class="mx-2 text-dark animate__animated animate__fadeInUp">LinkedIn</a>
