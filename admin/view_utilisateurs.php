@@ -2,7 +2,7 @@
 session_start();
 include '../scripts/functions.php';
 
-parametres();
+parametres('../');
 entete('../');
 navigation('../');
 ?>

@@ -23,10 +23,10 @@ $isModerator = isset($_SESSION['role']) && ($_SESSION['role'] === 'modo' || $_SE
 
 // Récupérer les annonces modifiables
 $annoncesUtilisateur = [];
-foreach ($annonces as $annonce) {
+foreach ($annonces as $index => $annonce) {
     // Les modérateurs peuvent voir toutes les annonces
     if ($isModerator || (isset($annonce['Pseudo']) && $annonce['Pseudo'] === $_SESSION['id'])) {
-        $annoncesUtilisateur[] = $annonce;
+        $annoncesUtilisateur[$index] = $annonce;
     }
 }
 
@@ -35,7 +35,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['index
     $index = (int)$_GET['index'];
 
     // Vérifier si l'utilisateur a le droit de supprimer l'annonce
-    if ($isModerator || (isset($annonces[$index]['Pseudo']) && $annonces[$index]['Pseudo'] === $_SESSION['id'])) {
+    if ($isModerator || (isset($annonces[$index]) && $annonces[$index]['Pseudo'] === $_SESSION['id'])) {
         unset($annonces[$index]);
         $annonces = array_values($annonces); // Réindexer le tableau
         file_put_contents($annoncesFile, json_encode($annonces, JSON_PRETTY_PRINT));

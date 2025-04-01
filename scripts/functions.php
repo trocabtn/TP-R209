@@ -53,6 +53,9 @@ function entete($prefix = '') {
 
 
 function navigation($prefix = '') {
+    // Récupérer le nom du fichier actuel
+    $currentPage = basename($_SERVER['PHP_SELF']);
+
     echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
     echo '<div class="container-fluid">';
     echo '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">';
@@ -62,29 +65,32 @@ function navigation($prefix = '') {
     echo '<ul class="navbar-nav me-auto">';
 
     // Lien vers la page d'accueil
-    echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'acceuil.php">Accueil</a></li>';
+    echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'acceuil.php' ? 'active' : '') . '" href="' . $prefix . 'acceuil.php">Accueil</a></li>';
 
     // Lien vers la page "Rechercher des annonces"
-    echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'rechercher.php">Rechercher des annonces</a></li>';
+    echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'rechercher.php' ? 'active' : '') . '" href="' . $prefix . 'rechercher.php">Rechercher des annonces</a></li>';
 
     // Lien vers la page "Visualiser les annonces"
-    echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'visualiser.php">Visualiser les annonces</a></li>';
+    echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'visualiser.php' ? 'active' : '') . '" href="' . $prefix . 'visualiser.php">Visualiser les annonces</a></li>';
+
+    // Lien vers la page "Calendrier"
+    echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'calendar.php' ? 'active' : '') . '" href="' . $prefix . 'calendar.php">Calendrier</a></li>';
 
     // Lien vers la page "Proposer une annonce" (uniquement si connecté)
     if (isset($_SESSION['id'])) {
-        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'proposer.php">Proposer une annonce</a></li>';
+        echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'proposer.php' ? 'active' : '') . '" href="' . $prefix . 'proposer.php">Proposer une annonce</a></li>';
     }
 
     // Lien vers la page "Modifier une annonce" (uniquement si connecté)
     if (isset($_SESSION['id'])) {
-        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'modifier.php">Modifier une annonce</a></li>';
+        echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'modifier.php' ? 'active' : '') . '" href="' . $prefix . 'modifier.php">Modifier une annonce</a></li>';
     }
 
     // Liens pour les administrateurs
     if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'admin/view_utilisateurs.php">Voir les utilisateurs</a></li>';
-        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'admin/view_annonces.php">Voir les annonces</a></li>';
-        echo '<li class="nav-item"><a class="nav-link" href="' . $prefix . 'administration.php">Administration</a></li>';
+        echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'view_utilisateurs.php' ? 'active' : '') . '" href="' . $prefix . 'admin/view_utilisateurs.php">Voir les utilisateurs</a></li>';
+        echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'view_annonces.php' ? 'active' : '') . '" href="' . $prefix . 'admin/view_annonces.php">Voir les annonces</a></li>';
+        echo '<li class="nav-item"><a class="nav-link ' . ($currentPage === 'administration.php' ? 'active' : '') . '" href="' . $prefix . 'administration.php">Administration</a></li>';
     }
 
     echo '</ul>';

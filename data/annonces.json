@@ -8,8 +8,7 @@
         "Commentaire": "pas de chien",
         "Inscrits": [
             "user"
-        ],
-        "id-annonce": "aucaijoir-67ec3a319d3223.74957491"
+        ]
     },
     {
         "Pseudo": "qalaicou",
@@ -21,8 +20,7 @@
         "Inscrits": [
             "beukaita",
             "moiqauzi"
-        ],
-        "id-annonce": "qalaicou-67ec3a319d51a5.00447992"
+        ]
     },
     {
         "Pseudo": "mopovaf",
@@ -33,8 +31,7 @@
         "Commentaire": "",
         "Inscrits": [
             "user"
-        ],
-        "id-annonce": "mopovaf-67ec3a319d5212.25723483"
+        ]
     },
     {
         "Pseudo": "moiqauzi",
@@ -46,8 +43,7 @@
         "Inscrits": [
             "noifaumau",
             "aucaijoir"
-        ],
-        "id-annonce": "moiqauzi-67ec3a319d5230.47325132"
+        ]
     },
     {
         "Pseudo": "odeuvoipoif",
@@ -56,8 +52,7 @@
         "Arrivee": "saint-malo",
         "Places": 3,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "odeuvoipoif-67ec3a319d5248.50853719"
+        "Inscrits": []
     },
     {
         "Pseudo": "atoipeneu",
@@ -69,8 +64,7 @@
         "Inscrits": [
             "moiqauzi",
             "moiqauzi"
-        ],
-        "id-annonce": "atoipeneu-67ec3a319d5265.99065396"
+        ]
     },
     {
         "Pseudo": "noifaumau",
@@ -79,8 +73,7 @@
         "Arrivee": "caen",
         "Places": 4,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "noifaumau-67ec3a319d5277.42532989"
+        "Inscrits": []
     },
     {
         "Pseudo": "neuhagal",
@@ -92,8 +85,7 @@
         "Inscrits": [
             "qalaicou",
             "mopovaf"
-        ],
-        "id-annonce": "neuhagal-67ec3a319d5282.34828665"
+        ]
     },
     {
         "Pseudo": "beukaita",
@@ -102,8 +94,7 @@
         "Arrivee": "nantes",
         "Places": 4,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "beukaita-67ec3a319d5298.98291456"
+        "Inscrits": []
     },
     {
         "Pseudo": "rezetar",
@@ -115,8 +106,7 @@
         "Inscrits": [
             "aucaijoir",
             "noifaumau"
-        ],
-        "id-annonce": "rezetar-67ec3a319d52a6.67292354"
+        ]
     },
     {
         "Pseudo": "aucaijoir",
@@ -125,8 +115,7 @@
         "Arrivee": "avranches",
         "Places": 2,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "aucaijoir-67ec3a319d52b1.09903476"
+        "Inscrits": []
     },
     {
         "Pseudo": "qalaicou",
@@ -138,8 +127,7 @@
         "Inscrits": [
             "moiqauzi",
             "qalaicou"
-        ],
-        "id-annonce": "qalaicou-67ec3a319d52c1.75868659"
+        ]
     },
     {
         "Pseudo": "mopovaf",
@@ -148,8 +136,7 @@
         "Arrivee": "saint-malo",
         "Places": 1,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "mopovaf-67ec3a319d52d3.46863935"
+        "Inscrits": []
     },
     {
         "Pseudo": "moiqauzi",
@@ -158,8 +145,7 @@
         "Arrivee": "saint-brieuc",
         "Places": 1,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "moiqauzi-67ec3a319d52e6.53592625"
+        "Inscrits": []
     },
     {
         "Pseudo": "odeuvoipoif",
@@ -168,8 +154,7 @@
         "Arrivee": "brest",
         "Places": 1,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "odeuvoipoif-67ec3a319d52f7.14446792"
+        "Inscrits": []
     },
     {
         "Pseudo": "atoipeneu",
@@ -181,8 +166,7 @@
         "Inscrits": [
             "beukaita",
             "mopovaf"
-        ],
-        "id-annonce": "atoipeneu-67ec3a319d5303.12568045"
+        ]
     },
     {
         "Pseudo": "noifaumau",
@@ -191,8 +175,7 @@
         "Arrivee": "nantes",
         "Places": 3,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "noifaumau-67ec3a319d5315.44948996"
+        "Inscrits": []
     },
     {
         "Pseudo": "neuhagal",
@@ -201,8 +184,7 @@
         "Arrivee": "saint-malo",
         "Places": 1,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "neuhagal-67ec3a319d5326.52005513"
+        "Inscrits": []
     },
     {
         "Pseudo": "beukaita",
@@ -211,8 +193,7 @@
         "Arrivee": "saint-malo",
         "Places": 3,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "beukaita-67ec3a319d5337.99012254"
+        "Inscrits": []
     },
     {
         "Pseudo": "rezetar",
@@ -224,8 +205,7 @@
         "Inscrits": [
             "atoipeneu",
             "noifaumau"
-        ],
-        "id-annonce": "rezetar-67ec3a319d5340.80291814"
+        ]
     },
     {
         "Pseudo": "aucaijoir",
@@ -234,8 +214,7 @@
         "Arrivee": "rennes",
         "Places": 3,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "aucaijoir-67ec3a319d5355.24279556"
+        "Inscrits": []
     },
     {
         "Pseudo": "qalaicou",
@@ -246,8 +225,7 @@
         "Commentaire": "",
         "Inscrits": [
             "beukaita"
-        ],
-        "id-annonce": "qalaicou-67ec3a319d5368.13744871"
+        ]
     },
     {
         "Pseudo": "mopovaf",
@@ -258,8 +236,7 @@
         "Commentaire": "",
         "Inscrits": [
             "atoipeneu"
-        ],
-        "id-annonce": "mopovaf-67ec3a319d5376.84044375"
+        ]
     },
     {
         "Pseudo": "moiqauzi",
@@ -271,8 +248,7 @@
         "Inscrits": [
             "mopovaf",
             "aucaijoir"
-        ],
-        "id-annonce": "moiqauzi-67ec3a319d5382.96457357"
+        ]
     },
     {
         "Pseudo": "odeuvoipoif",
@@ -283,8 +259,7 @@
         "Commentaire": "",
         "Inscrits": [
             "noifaumau"
-        ],
-        "id-annonce": "odeuvoipoif-67ec3a319d5396.29194217"
+        ]
     },
     {
         "Pseudo": "atoipeneu",
@@ -295,8 +270,7 @@
         "Commentaire": "",
         "Inscrits": [
             "rezetar"
-        ],
-        "id-annonce": "atoipeneu-67ec3a319d53a0.06904423"
+        ]
     },
     {
         "Pseudo": "noifaumau",
@@ -305,8 +279,7 @@
         "Arrivee": "saint-malo",
         "Places": 1,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "noifaumau-67ec3a319d53b2.37645110"
+        "Inscrits": []
     },
     {
         "Pseudo": "neuhagal",
@@ -317,8 +290,7 @@
         "Commentaire": "",
         "Inscrits": [
             "qalaicou"
-        ],
-        "id-annonce": "neuhagal-67ec3a319d53c1.34528734"
+        ]
     },
     {
         "Pseudo": "beukaita",
@@ -329,8 +301,7 @@
         "Commentaire": "",
         "Inscrits": [
             "odeuvoipoif"
-        ],
-        "id-annonce": "beukaita-67ec3a319d53d3.87929623"
+        ]
     },
     {
         "Pseudo": "rezetar",
@@ -339,8 +310,7 @@
         "Arrivee": "saint-malo",
         "Places": 4,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "rezetar-67ec3a319d53e0.74405189"
+        "Inscrits": []
     },
     {
         "Pseudo": "aucaijoir",
@@ -349,8 +319,7 @@
         "Arrivee": "saint-malo",
         "Places": 2,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "aucaijoir-67ec3a319d53f9.14543251"
+        "Inscrits": []
     },
     {
         "Pseudo": "qalaicou",
@@ -362,8 +331,7 @@
         "Inscrits": [
             "atoipeneu",
             "noifaumau"
-        ],
-        "id-annonce": "qalaicou-67ec3a319d5403.81996349"
+        ]
     },
     {
         "Pseudo": "mopovaf",
@@ -372,8 +340,7 @@
         "Arrivee": "saint-malo",
         "Places": 2,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "mopovaf-67ec3a319d5416.59637050"
+        "Inscrits": []
     },
     {
         "Pseudo": "moiqauzi",
@@ -382,8 +349,7 @@
         "Arrivee": "saint-malo",
         "Places": 1,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "moiqauzi-67ec3a319d5425.50997359"
+        "Inscrits": []
     },
     {
         "Pseudo": "odeuvoipoif",
@@ -392,8 +358,7 @@
         "Arrivee": "saint-malo",
         "Places": 3,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "odeuvoipoif-67ec3a319d5449.94215843"
+        "Inscrits": []
     },
     {
         "Pseudo": "atoipeneu",
@@ -404,8 +369,7 @@
         "Commentaire": "",
         "Inscrits": [
             "odeuvoipoif"
-        ],
-        "id-annonce": "atoipeneu-67ec3a319d5457.24158510"
+        ]
     },
     {
         "Pseudo": "noifaumau",
@@ -414,8 +378,7 @@
         "Arrivee": "foug\u00e8res",
         "Places": 3,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "noifaumau-67ec3a319d5462.71360711"
+        "Inscrits": []
     },
     {
         "Pseudo": "neuhagal",
@@ -424,8 +387,7 @@
         "Arrivee": "nantes",
         "Places": 3,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "neuhagal-67ec3a319d5473.43790789"
+        "Inscrits": []
     },
     {
         "Pseudo": "beukaita",
@@ -434,8 +396,7 @@
         "Arrivee": "saint-malo",
         "Places": 2,
         "Commentaire": "",
-        "Inscrits": [],
-        "id-annonce": "beukaita-67ec3a319d5480.04083132"
+        "Inscrits": []
     },
     {
         "Pseudo": "rezetar",
@@ -446,7 +407,6 @@
         "Commentaire": "",
         "Inscrits": [
             "neuhagal"
-        ],
-        "id-annonce": "rezetar-67ec3a319d5496.92274917"
+        ] 
     }
 ]
