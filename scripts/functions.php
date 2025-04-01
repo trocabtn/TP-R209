@@ -35,36 +35,38 @@ function parametres(){
 
 
 
-function entete(){
-    if (empty($_SESSION['id'])){
+function entete() {
+    echo '
+    <header class="py-3 mb-4 border-bottom">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="mx-auto">
+                    <a href="acceuil.php" class="d-flex flex-column align-items-center text-dark text-decoration-none">
+                        <img src="images/logo.png" alt="logo" height="50px" class="mb-2">
+                        <span class="fs-3 gloria-hallelujah-regular">CarCarBla</span>
+                    </a>
+                </div>';
+
+    if (empty($_SESSION['id'])) {
         echo '
-        <header class="py-3 mb-4 border-bottom">
-            <div class="container d-flex flex-wrap justify-content-center">
-            
-            <img src="images/logo.png" alt="logo" height="30px" width="30px">
-            <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                <span class="fs-3 gloria-hallelujah-regular">CarCarBla</span>
-            </a>
-            
-            
+                <div>
+                    <a href="connexion.php" class="btn btn-primary me-2">Se connecter</a>
+                    <a href="inscription.php" class="btn btn-outline-success">S\'inscrire</a>
+                </div>';
+    } else {
+        echo '
+                <div>
+                    <a href="profil.php" class="btn btn-secondary me-2">Mon Profil</a>
+                    <a href="deconnexion.php" class="btn btn-danger">Déconnexion</a>
+                </div>';
+    }
+
+    echo '
             </div>
-            <ul class="nav">
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
-            </ul>
+        </div>
+    </header>';
+}
 
-        </header>
-        </head>
-        ';
-    
-    }
-    else{
-
-
-    }
-    }
-   
 
 
 function navigation(){
@@ -83,7 +85,7 @@ function navigation(){
                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
             </form>
             </div>
-        </nav>
+        </nav>  
         ';
 }
 

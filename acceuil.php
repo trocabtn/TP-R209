@@ -10,26 +10,32 @@ navigation();
 ?>
 
 <body>
-    <h1>Bienvenue sur le site</h1>
+<h1 class="text-center my-4">Bienvenue sur le site</h1>
 
-    <?php if (isset($_SESSION['user'])): ?>
-        <p>Connecté en tant que : <strong><?= htmlspecialchars($_SESSION['user']['pseudo']); ?></strong></p>
-        <a href="profil.php">Modifier mon profil</a> | 
-        <a href="deconnexion.php">Se déconnecter</a>
-    <?php else: ?>
-        <p><a href="connexion.php">Se connecter</a> | <a href="inscription.php">S'inscrire</a></p>
-    <?php endif; ?>
+<div class="container">
+    <div class="row text-center my-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3">
+                <h5 class="card-title">Nombre d'utilisateurs</h5>
+                <p class="display-6"><?= count($utilisateurs); ?></p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3">
+                <h5 class="card-title">Nombre d'annonces</h5>
+                <p class="display-6"><?= count($annonces); ?></p>
+            </div>
+        </div>
+    </div>
 
-    <p>Nombre d'utilisateurs : <?= count($utilisateurs); ?></p>
-    <p>Nombre d'annonces : <?= count($annonces); ?></p>
+    <h2 class="text-center my-4">Navigation</h2>
+    <div class="list-group text-center">
+        <a href="admin/view_utilisateurs.php" class="list-group-item list-group-item-action">Voir les utilisateurs</a>
+        <a href="admin/view_annonces.php" class="list-group-item list-group-item-action">Voir les annonces</a>
+        <a href="administration.php" class="list-group-item list-group-item-action list-group-item-danger">Administration</a>
+    </div>
+</div>
 
-    <h2>Navigation</h2>
-    <ul>
-        <li><a href="admin/view_utilisateurs.php">Voir les utilisateurs</a></li>
-        <li><a href="admin/view_annonces.php">Voir les annonces</a></li>
-        <li><a href="administration.php">Administration</a></li>
-    </ul>
-
-    <?php pieddepage(); ?>
+<?php pieddepage(); ?>
 </body>
 </html>
