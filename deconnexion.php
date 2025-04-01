@@ -5,11 +5,7 @@ session_start();
 session_unset();
 session_destroy();
 
-// Supprimer les cookies d'authentification persistante
-setcookie('user_id', '', time() - 3600, '/');
-setcookie('user_pseudo', '', time() - 3600, '/');
-
-// Rediriger vers la page de connexion ou d'accueil
+// Rediriger vers la page de connexion
 header('Location: connexion.php');
 exit;
 ?>

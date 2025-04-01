@@ -1,8 +1,42 @@
 <?php
 session_start();
+
+// Vérification si l'utilisateur est connecté
+if (!isset($_SESSION['utilisateur'])) {
+    header('Location: connexion.php');
+    exit;
+}
+
+// Charger les données nécessaires
 $utilisateurs = json_decode(file_get_contents('data/utilisateurs.json'), true);
 $annonces = json_decode(file_get_contents('data/annonces.json'), true);
+
 include 'scripts/functions.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pseudo = $_POST['utilisateur'] ?? ''; // Récupérer le pseudo depuis le formulaire
+    $password = $_POST['password'] ?? ''; // Récupérer le mot de passe depuis le formulaire
+
+    foreach ($utilisateurs as $utilisateur) {
+        if ($utilisateur['utilisateur'] === $pseudo) { // Vérifier le pseudo
+            if (password_verify($password, $utilisateur['motdepasse'])) {
+                // Définir les informations de session
+                $_SESSION['utilisateur'] = $utilisateur['utilisateur'];
+                $_SESSION['role'] = $utilisateur['role'];
+
+                // Redirection vers la page d'accueil
+                header('Location: acceuil.php');
+                exit;
+            } else {
+                $message = 'Mot de passe incorrect.';
+            }
+        }
+    }
+
+    if (empty($message)) {
+        $message = 'Utilisateur non trouvé.';
+    }
+}
 
 parametres();
 entete();
@@ -26,13 +60,6 @@ navigation();
                 <p class="display-6"><?= count($annonces); ?></p>
             </div>
         </div>
-    </div>
-
-    <h2 class="text-center my-4">Navigation</h2>
-    <div class="list-group text-center">
-        <a href="admin/view_utilisateurs.php" class="list-group-item list-group-item-action">Voir les utilisateurs</a>
-        <a href="admin/view_annonces.php" class="list-group-item list-group-item-action">Voir les annonces</a>
-        <a href="administration.php" class="list-group-item list-group-item-action list-group-item-danger">Administration</a>
     </div>
 </div>
 

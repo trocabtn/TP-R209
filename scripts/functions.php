@@ -46,16 +46,16 @@ function entete($prefix = '') {
                     </a>
                 </div>
                 <div>';
-    if (empty($_SESSION['id'])) {
-        // Afficher les boutons "Se connecter" et "S'inscrire" si l'utilisateur n'est pas connecté
+    if (isset($_SESSION['utilisateur'])) {
+        // Afficher le nom de l'utilisateur connecté et le bouton de déconnexion
+        echo '
+                    <span class="me-3">Bienvenue, ' . htmlspecialchars($_SESSION['utilisateur']) . '</span>
+                    <a href="' . $prefix . 'deconnexion.php" class="btn btn-danger">Déconnexion</a>';
+    } else {
+        // Afficher les boutons de connexion et d'inscription si l'utilisateur n'est pas connecté
         echo '
                     <a href="' . $prefix . 'connexion.php" class="btn btn-primary me-2">Se connecter</a>
                     <a href="' . $prefix . 'inscription.php" class="btn btn-outline-success">S\'inscrire</a>';
-    } else {
-        // Afficher le bouton "Mon Profil" et "Déconnexion" si l'utilisateur est connecté
-        echo '
-                    <a href="' . $prefix . 'profil.php" class="btn btn-secondary me-2">Mon Profil</a>';
-        afficherLienDeconnexion($prefix);
     }
     echo '
                 </div>
